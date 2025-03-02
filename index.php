@@ -38,13 +38,13 @@ session_start();
             
         } elseif ($_GET["window"] == "users") {
 
-            include_once "./components/Users.html";
+            include_once "./components/Users.php";
 
         } elseif ($_GET["window"] == "add") {
-            include_once "./components/Add.html";
+            include_once "./components/Add.php";
 
         } else {
-            include_once "./components/Error.html";
+            include_once "./components/Error.php";
         }
         ?>
         </main>

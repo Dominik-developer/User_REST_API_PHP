@@ -1,6 +1,6 @@
-<!DOCTYPE html> <!-- APP component -->
+<!-- ADD component -->
 
-    <h2>Add New User</h2>
+<h2>Add New User</h2>
     <form action="../API/index.php" method="POST">
         <div class="mb-3 input">
             <label for="name" class="form-label">Name</label>

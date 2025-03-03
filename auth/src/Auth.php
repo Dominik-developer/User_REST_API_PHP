@@ -1,34 +1,46 @@
 <?php
 
 class Auth {
+    private PDO $conn;
 
-    public function Login(string $login, string $password) {
+    public function __construct(Connect $database)
+    {
+        $this->conn = $database->getConnection();
+    }
 
-        $succes = true; //for now
+    public function Login (string $login, string $password): never {
 
-        if($succes == true) {
-            session_start();
-            $_SESSION['LOGIN'] = true;
-            header("Location: ../index.php");
-        } else {
+        $sql = "SELECT * FROM admin WHERE login = :login";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
+        if (!$row || !password_verify($password, $row['PASSWORD'])) {
+
             session_start();
             $_SESSION['LOGIN'] = false;
-            header("Location: ../index.php");
+            $_SESSION["mess"] = "Wrong password";
+            header("Location: ../index.php?window=login");
+            exit;
         }
-        
-    }
-
-    public function Logout() {
-
-        $_SESSION['LOGIN'] = false;
-        session_unset();
-        session_destroy();
 
         session_start();
-        $_SESSION['LOGIN'] = false;
-        header("Location: ../index.php");
-
+        $_SESSION['LOGIN'] = true;
+        header("Location: ../index.php?window=users");
+        exit;
     }
 
+    public function Logout(): never {
+
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: ../index.php?window=login");
+        exit();
+
+    }
 }
 

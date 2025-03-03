@@ -1,3 +1,3 @@
-<!DOCTYPE html> <!-- ERROR component -->
+<!-- ERROR component -->
 
 <p>Error</p>

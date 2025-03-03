@@ -6,9 +6,9 @@ spl_autoload_register(function  ($class) {
     require __DIR__ ."/src/$class.php";
 });
 
-$database = new Connect("localhost", "user_db", "root", "root");
+$database = new Connect("localhost", "users_db", "root", "root");
 
-$auth = new Auth();
+$auth = new Auth($database);
 
 $url_param = $_GET['action'] ?? '';
 

@@ -1,3 +1,4 @@
 <!-- ERROR component -->
 
-<p>Error</p>
+<?php echo '<p>Error</p>';?>
+

@@ -1,6 +1,8 @@
 <!-- ADD component -->
+<?php 
 
-<h2>Add New User</h2>
+return 
+    '<h2>Add New User</h2>
     <form action="../API/index.php" method="POST">
         <div class="mb-3 input">
             <label for="name" class="form-label">Name</label>
@@ -31,4 +33,4 @@
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <button type="submit" class="btn btn-primary">Add User</button>
-    </form>
+    </form>'; 

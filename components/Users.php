@@ -1,3 +1,3 @@
 <!-- USER component -->
 
-<p>Users </p>
+<?php echo '<p>Users </p>';?>
